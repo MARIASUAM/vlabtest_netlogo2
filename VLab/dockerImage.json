@@ -1,0 +1,16 @@
+{
+  "image": “mariasuam/vlabs_nl",
+  "resources": {
+    "memory_mb": "5000",
+    "cpu_units": ""
+ },
+  "container": {
+    "entryPoint": [
+      "/bin/bash",
+      "-c"
+ ],
+    "command": [
+      “setup && go"
+ ]
+  }
+}

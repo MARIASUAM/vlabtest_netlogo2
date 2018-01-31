@@ -1,0 +1,64 @@
+{
+  "inputs": [
+    {
+      "id": "DataObject_1",
+      "inputType": "individual",
+      "valueType": "value",
+      "description": "Elevation ASCII file",
+      "name": "Elevation",
+      "obligation": true,
+      "hasDefault": false,
+      "valueSchema": "url",
+      "target": "data/elev_medium_23030.asc"
+ }
+
+    {
+      "id": "DataObject_2",
+      "inputType": "individual",
+      "valueType": "value",
+      "description": "Land cover ASCII file",
+      "name": "Land cover",
+      "obligation": true,
+      "hasDefault": false,
+      "valueSchema": "url",
+      "target": "data/land_cover_medium_23030.asc"
+ }
+
+    {
+      "id": "DataObject_3",
+      "inputType": "individual",
+      "valueType": "value",
+      "description": "Pines in shape file",
+      "name": "Pines",
+      "obligation": true,
+      "hasDefault": false,
+      "valueSchema": "url",
+      "target": "data/pinos_medium_23030.shp"
+ } 
+  ],
+
+
+
+  "outputs": [
+    {
+      "id": "DataObject_0n95v5pa",
+      "outputType": "individual",
+      "valueType": "value",
+      "description": "Elevation map",
+      "name": "map_test",
+      "valueSchema": "url",
+      "target": "outputs/map_test.asc"
+ }
+
+    {
+      "id": "DataObject_0n95v5pb",
+      "outputType": "individual",
+      "valueType": "value",
+      "description": "csv table with turtles attributes",
+      "name": "test_table",
+      "valueSchema": "url",
+      "target": "outputs/test_table.txt"
+ }
+
+  ]
+}
