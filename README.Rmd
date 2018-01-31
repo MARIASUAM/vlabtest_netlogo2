@@ -1,0 +1,35 @@
+---
+title: "Tests"
+output: html_document
+---
+
+# Test I
+
+	docker run --name vlabtest_netlogo2 -v /c/Users/DELL/vlabtest_netlogo2:/nl2 -v /c/Users/DELL/DATA_netlogo2:/testdata -i -t similitude/netlogo-sample-simmer /bin/bash
+	ls -l /nl2 --> OK
+	ls -l /testdata --> OK
+	mkdir data
+	cp /testdata/elev_medium_23030.asc data/
+	cp /testdata/land_cover_medium_23030.asc data/
+	cp /testdata/pinos_medium_23030.cpg data/
+	cp /testdata/pinos_medium_23030.dbf data/
+	cp /testdata/pinos_medium_23030.prj data/
+	cp /testdata/pinos_medium_23030.sbn data/
+	cp /testdata/pinos_medium_23030.sbx data/
+	cp /testdata/pinos_medium_23030.shp data/
+	cp /testdata/pinos_medium_23030.shx data/
+	
+In new terminal: 
+	docker commit vlabtest_netlogo2 mariasuam/vlabs_nl
+	docker login
+	(credentials)
+	docker push mariasuam/vlabs_nl
+
+VLAB folder and .json files creation
+	- iodescription & script: doubts about field values
+	- dockerImage: as suggested by M. Santoro
+
+"Model upload" --> Validation failed, no error messages provided
+
+# Test II
+

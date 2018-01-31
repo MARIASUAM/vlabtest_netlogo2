@@ -10,7 +10,7 @@
       "hasDefault": false,
       "valueSchema": "url",
       "target": "data/elev_medium_23030.asc"
- }
+ },
 
     {
       "id": "DataObject_2",
@@ -22,7 +22,7 @@
       "hasDefault": false,
       "valueSchema": "url",
       "target": "data/land_cover_medium_23030.asc"
- }
+ },
 
     {
       "id": "DataObject_3",
@@ -37,19 +37,7 @@
  } 
   ],
 
-
-
   "outputs": [
-    {
-      "id": "DataObject_0n95v5pa",
-      "outputType": "individual",
-      "valueType": "value",
-      "description": "Elevation map",
-      "name": "map_test",
-      "valueSchema": "url",
-      "target": "outputs/map_test.asc"
- }
-
     {
       "id": "DataObject_0n95v5pb",
       "outputType": "individual",
