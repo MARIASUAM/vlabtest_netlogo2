@@ -33,3 +33,6 @@ VLAB folder and .json files creation
 
 # Test II
 
+  New version of "Testing_code.nlogo", which does not require the gis extension
+  Docker code executed as before
+  "Model upload" --> Validation failed, no error messages provided
