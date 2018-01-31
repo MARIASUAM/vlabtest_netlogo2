@@ -1,5 +1,5 @@
 extensions [
-  gis
+;  gis
   csv
 ]
 
@@ -28,9 +28,9 @@ turtles-own [
 
 to setup
   ca
-  set elevation_path "../DATA_netlogo2/elev_medium_23030.asc"
-  set land_cover_path "../DATA_netlogo2/land_cover_medium_23030.asc"
-  set pines_path "../DATA_netlogo2/pinos_medium_23030.shp"
+;  set elevation_path "../DATA_netlogo2/elev_medium_23030.asc"
+;  set land_cover_path "../DATA_netlogo2/land_cover_medium_23030.asc"
+;  set pines_path "../DATA_netlogo2/pinos_medium_23030.shp"
 
   set test_table lput (list "turtle" "xcor" "ycor" "elevation" "height" "quantity" "quality") []
 
@@ -39,23 +39,32 @@ to setup
 end
 
 to initialize_landscape
-  set area gis:load-dataset elevation_path
-  gis:set-world-envelope gis:envelope-of area
+;  set area gis:load-dataset elevation_path
+;  gis:set-world-envelope gis:envelope-of area
 
-  let columns gis:width-of area - 1
-  let rows gis:height-of area - 1
+;  let columns gis:width-of area - 1
+;  let rows gis:height-of area - 1
+
+  let columns 14
+  let rows 12
 
   set patch_size 50
   set-patch-size patch_size
   resize-world 0 columns ( - rows ) 0
 
-  gis:apply-raster gis:load-dataset land_cover_path land_cover ;; Load cover map
-  gis:apply-raster gis:load-dataset elevation_path elevation ;; Load elevation map. To see it: "ask patches [show elevation]"
+ask patches [
+    set elevation random-normal 1500 200
+]
 
-  let min-elevation gis:minimum-of area
-  let max-elevation gis:maximum-of area
+;  gis:apply-raster gis:load-dataset land_cover_path land_cover ;; Load cover map
+;  gis:apply-raster gis:load-dataset elevation_path elevation ;; Load elevation map. To see it: "ask patches [show elevation]"
+;
+;  let min-elevation gis:minimum-of area
+;  let max-elevation gis:maximum-of area
+
   ask patches [
-    set pcolor scale-color green elevation min-elevation max-elevation
+    ;set pcolor scale-color green elevation min-elevation max-elevation
+    set pcolor scale-color green elevation 1000 3000
     set plabel elevation
   ]
 end
@@ -63,26 +72,30 @@ end
 to initialize_pines
   set-default-shape turtles "tree"
 
-  set pines-dataset gis:load-dataset pines_path
-  foreach gis:feature-list-of pines-dataset [
-    let location gis:location-of (first (first (gis:vertex-lists-of ?)))
-    create-turtles 1 [
-      set height gis:property-value ? "Height"
-      set xcor item 0 location ;; Establishes coordinate x of the pine
-      set ycor item 1 location ;; Establishes coordinate y of the pine
+;  set pines-dataset gis:load-dataset pines_path
+;  foreach gis:feature-list-of pines-dataset [
+;    let location gis:location-of (first (first (gis:vertex-lists-of ?)))
+;    create-turtles 1 [
+  create-turtles 1200 [
+      ; set height gis:property-value ? "Height"
+      set height random-normal 10 2
+;      set xcor item 0 location ;; Establishes coordinate x of the pine
+;      set ycor item 1 location ;; Establishes coordinate y of the pine
+      set xcor random-xcor
+      set ycor random-ycor
 
       set quantity random-normal 50 20
 
       ifelse (quantity < 50)
          [ set quality "defoliated" ]
          [ set quality "no_defoliated" ]
-    ]
+;    ]
   ]
 end
 
 to go
 
-  gis:store-dataset gis:patch-dataset elevation "outputs/map_test.asc"
+;  gis:store-dataset gis:patch-dataset elevation "outputs/map_test.asc"
 
 ask turtles [
   set test_table lput (list who xcor ycor elevation height quantity quality) test_table
@@ -95,7 +108,7 @@ GRAPHICS-WINDOW
 210
 10
 970
-641
+691
 -1
 -1
 50.0
@@ -110,7 +123,7 @@ GRAPHICS-WINDOW
 1
 0
 14
--11
+-12
 0
 0
 0
